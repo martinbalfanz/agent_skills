@@ -18,3 +18,26 @@ directory into your agent's skills folder, then ask the agent to use it
 
 With a plain chatbot, paste the body of the skill's `SKILL.md` into the chat
 (or into a custom/system prompt), followed by what you want it to do.
+
+## Fork additions
+
+This fork of [Jane Street's agent_skills](https://github.com/janestreet/agent_skills)
+keeps the original tutor instructions, strict tone, skill map, and teaching loop.
+It adds a short evidence ledger, verification/provisional judgments, and unseen
+transfer checks for independent mastery.
+
+Optional [local persistence and FSRS](socratic-tutor/references/STATE.md) use the
+retained Python helper from this fork with separately installed
+[Py-FSRS](https://github.com/open-spaced-repetition/py-fsrs). Python 3.10+ is needed
+only for the helper. Chat-only use needs no dependencies. State is opt in; there
+is no network sync or background reminder service. FSRS schedules recall cards,
+not practical mastery.
+
+To run the helper tests, including real FSRS integration:
+
+```sh
+python -m pip install 'fsrs>=6,<7'
+python -m unittest discover -s socratic-tutor/tests -v
+```
+
+The scheduler test is skipped if FSRS is absent; progress tracking still works.

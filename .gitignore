@@ -3,3 +3,8 @@ _build
 *.merlin
 _opam
 
+# Tutor progress contains personal learning notes. Never commit it accidentally.
+*.tutor-state.json
+.tutor-state/
+__pycache__/
+*.pyc
